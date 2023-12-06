@@ -14,6 +14,9 @@ import lombok.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigInteger;
+import java.util.Random;
+
 @PojaGenerated
 @RestController
 @Value
@@ -27,6 +30,14 @@ public class HealthController {
   public String ping() {
     return "pong";
   }
+
+  @GetMapping("/new-prime")
+    public String newPrime() {
+        BigInteger newPrimeNumber = BigInteger.probablePrime(100, new Random());
+
+        return newPrimeNumber.toString();
+    }
+
 
   @GetMapping("/dummy-table")
   public List<Dummy> dummyTable() {
